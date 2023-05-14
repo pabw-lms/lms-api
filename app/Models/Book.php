@@ -11,6 +11,17 @@ class Book extends Model
 
     protected $table = 'books';
 
+    protected $fillable = [
+        'title',
+        'author',
+        'stock',
+        'current_stock',
+        'publisher',
+        'pub_year',
+        'pages',
+        'isbn',
+    ];
+
     public function transaction(){
         return $this->hasMany(Transaction::class);
     }

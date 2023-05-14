@@ -32,7 +32,7 @@ class BookController extends Controller
             'title' => 'required',
             'author' => 'required',
             'stock' => 'required',
-            'availability' => 'required',
+            'current_stock' => 'required',
             'publisher' => 'required',
             'pub_year' => 'required',
             'pages' => 'required',

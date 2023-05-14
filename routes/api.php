@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::resource('/books', BookController::class);
+Route::resource('/v1/books', BookController::class);
 
-Route::get('/books/search/{name}', [BookController::class, 'search']);
+Route::get('/v1/books/search/{name}', [BookController::class, 'search']);

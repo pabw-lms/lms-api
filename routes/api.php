@@ -15,10 +15,19 @@ use App\Http\Controllers\Api\V1\BookController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+// Book Controller
+Route::group(['prefix' => '/v1'], function() {
+    // protected route
+    Route::group(['middleware' => ['auth:sanctum']], function() {
+        Route::post('/books', [BookController::class, 'store']);
+        Route::put('/books/{id}', [BookController::class, 'update']);
+        Route::delete('/books/{id}', [BookController::class, 'destroy']);
+    });
+    // public route
+    Route::group([], function() {
+        Route::get('/books', [BookController::class, 'index']);
+        Route::get('/books/{id}', [BookController::class, 'show']);
+        Route::get('/books/search/{title}', [BookController::class, 'search']);
+    });
+});
 
-Route::resource('/v1/books', BookController::class);
-
-Route::get('/v1/books/search/{name}', [BookController::class, 'search']);

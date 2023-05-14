@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+
+    protected $table = 'members';
+
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
+    }
 }

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->dateTime('borrowed_at');
             $table->dateTime('returned_at')->nullable();
             $table->string('status'); // not_returned, returned
-            $table->unsignedInteger('member_id');
-            $table->unsignedInteger('book_id');
+            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('book_id');
             $table->timestamps();
             $table->foreign('member_id')->references('id')->on('members');
             $table->foreign('book_id')->references('id')->on('books');

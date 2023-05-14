@@ -36,6 +36,7 @@ class BookController extends Controller
             'publisher' => 'required',
             'pub_year' => 'required',
             'pages' => 'required',
+            'isbn' => 'nullable'
         ]);
 
         return Book::create($request->all());

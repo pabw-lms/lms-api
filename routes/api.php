@@ -31,3 +31,18 @@ Route::group(['prefix' => '/v1'], function() {
     });
 });
 
+// Member Controller
+Route::group(['prefix' => '/v1'], function() {
+    // protected route
+    Route::group(['middleware' => ['auth:sanctum']], function() {
+        Route::post('/members', [MemberController::class, 'store']);
+        Route::put('/members/{id}', [MemberController::class, 'update']);
+        Route::delete('/members/{id}', [MemberController::class, 'destroy']);
+    });
+    // public route
+    Route::group([], function() {
+        Route::get('/members', [MemberController::class, 'index']);
+        Route::get('/members/{id}', [MemberController::class, 'show']);
+        Route::get('/members/search/{title}', [MemberController::class, 'search']);
+    });
+});

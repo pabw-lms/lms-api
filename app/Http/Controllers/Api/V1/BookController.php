@@ -29,14 +29,14 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'stock' => 'required',
-            'current_stock' => 'required',
-            'publisher' => 'required',
-            'pub_year' => 'required',
-            'pages' => 'required',
-            'isbn' => 'nullable'
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'stock' => 'required|integer',
+            'current_stock' => 'required|integer',
+            'publisher' => 'required|string',
+            'pub_year' => 'required|string',
+            'pages' => 'required|string',
+            'isbn' => 'nullable|string'
         ]);
 
         return Book::create($request->all());

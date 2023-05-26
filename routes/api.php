@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\BookController;
@@ -30,6 +31,14 @@ Route::group(['prefix' => '/v1'], function() {
         Route::get('/books/search/{title}', [BookController::class, 'search']);
     });
 });
+
+// AuthController Admin
+Route::group(['prefix' => '/v1'], function() {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware(['auth:sanctum']);
+});
+
 
 // Member Controller
 Route::group(['prefix' => '/v1'], function() {

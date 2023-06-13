@@ -11,12 +11,22 @@ class Transaction extends Model
 
     protected $table = 'transactions';
 
+    protected $fillable = [
+        'borrowed_at',
+        'returned_at',
+        'status',
+        'user_id',
+        'book_id',
+    ];
+
+    // protected $casts = [
+    //     'user_id' => 'bigint',
+    //     'book_id' => 'bigint',
+    // ];
+
+
     public function book(){
         return $this->belongsTo(Book::class);
-    }
-
-    public function member(){
-        return $this->belongsTo(Member::class);
     }
 
     public function user(){

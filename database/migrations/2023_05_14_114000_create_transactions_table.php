@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('borrowed_at');
-            $table->dateTime('returned_at')->nullable();
+            $table->string('borrowed_at');
+            $table->string('returned_at')->nullable();
             $table->string('status'); // not_returned, returned
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('book_id');
             $table->timestamps();
-            $table->foreign('member_id')->references('id')->on('members');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('book_id')->references('id')->on('books');
         });
     }

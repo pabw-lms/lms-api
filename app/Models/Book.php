@@ -12,11 +12,13 @@ class Book extends Model
     protected $table = 'books';
 
     protected $fillable = [
+        'cover',
         'title',
         'author',
         'stock',
         'current_stock',
         'publisher',
+        'description',
         'pub_year',
         'pages',
         'isbn',
